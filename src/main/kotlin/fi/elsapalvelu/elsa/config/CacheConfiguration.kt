@@ -52,14 +52,15 @@ class CacheConfiguration(
     }
 
     @Bean
+    @Suppress("MaxLineLength")
     fun cacheManagerCustomizer(): JCacheManagerCustomizer {
+        // @formatter:off
         return JCacheManagerCustomizer { cm ->
             createCache(cm, fi.elsapalvelu.elsa.domain.Arviointiasteikko::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Arviointiasteikko::class.java.name + ".erikoisalat")
             createCache(cm, fi.elsapalvelu.elsa.domain.Arviointiasteikko::class.java.name + ".tasot")
             createCache(cm, fi.elsapalvelu.elsa.domain.ArviointiasteikonTaso::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Arviointityokalu::class.java.name)
-            createCache(cm, fi.elsapalvelu.elsa.domain.ArvioitavanKokonaisuudenKategoria::class.java.name + ".arvioitavatKokonaisuudet")
             createCache(cm, fi.elsapalvelu.elsa.domain.ArvioitavaOsaalue::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Asiakirja::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Authority::class.java.name)
@@ -88,10 +89,7 @@ class CacheConfiguration(
             createCache(cm, fi.elsapalvelu.elsa.domain.KoulutussopimuksenKoulutuspaikka::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Kunta::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.Oppimistavoite::class.java.name)
-            createCache(
-                cm,
-                fi.elsapalvelu.elsa.domain.OppimistavoitteenKategoria::class.java.name + ".oppimistavoitteet"
-            )
+            createCache(cm, fi.elsapalvelu.elsa.domain.OppimistavoitteenKategoria::class.java.name + ".oppimistavoitteet")
             createCache(cm, fi.elsapalvelu.elsa.domain.OppimistavoitteenKategoria::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.OsaalueenArviointi::class.java.name)
             createCache(cm, fi.elsapalvelu.elsa.domain.PoissaolonSyy::class.java.name)
@@ -110,6 +108,7 @@ class CacheConfiguration(
             createCache(cm, fi.elsapalvelu.elsa.repository.UserRepository.USERS_BY_EMAIL_CACHE)
             createCache(cm, fi.elsapalvelu.elsa.repository.UserRepository.USERS_BY_LOGIN_CACHE)
         }
+        // @formatter:on
     }
 
     private fun createCache(cm: javax.cache.CacheManager, cacheName: String) {

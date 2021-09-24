@@ -13,7 +13,7 @@ class ThymeleafConfiguration {
     @Bean
     fun thymeleafTemplateResolver(): ITemplateResolver? {
         val templateResolver = ClassLoaderTemplateResolver()
-        templateResolver.prefix = "templates/mail/"
+        templateResolver.prefix = "templates/"
         templateResolver.suffix = ".html"
         templateResolver.setTemplateMode("HTML")
         templateResolver.characterEncoding = "UTF-8"

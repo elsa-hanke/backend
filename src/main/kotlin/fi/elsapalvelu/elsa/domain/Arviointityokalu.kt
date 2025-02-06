@@ -1,11 +1,11 @@
 package fi.elsapalvelu.elsa.domain
 
+import jakarta.persistence.*
+import jakarta.validation.constraints.NotNull
 import org.hibernate.annotations.Cache
 import org.hibernate.annotations.CacheConcurrencyStrategy
 import java.io.Serializable
 import java.time.Instant
-import jakarta.persistence.*
-import jakarta.validation.constraints.NotNull
 
 @Entity
 @Table(name = "arviointityokalu")
@@ -23,6 +23,13 @@ data class Arviointityokalu(
     @NotNull
     @ManyToOne(optional = true)
     var kayttaja: Kayttaja? = null,
+
+    @ManyToOne(optional = false)
+    var kategoria: ArviointityokaluKategoria? = null,
+
+    @NotNull
+    @Column(name = "kaytossa")
+    var kaytossa: Boolean = true,
 
     @get: NotNull
     @Column(name = "luontiaika", nullable = false)

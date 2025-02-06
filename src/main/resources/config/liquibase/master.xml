@@ -274,5 +274,6 @@
     <include file="config/liquibase/changelog/20240611132400_modify_entity_VastuuhenkilonTehtavatyyppi.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240627153400_modify_entity_OpintosuoritusTyyppi.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241007134300_modify_entity_ErikoistuvaLaakari.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250106143021_modify_entity_Arviointityokalu.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
 <!-- @formatter:on -->

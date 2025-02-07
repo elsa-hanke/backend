@@ -14,4 +14,5 @@ interface ArviointityokaluService {
     fun findOne(id: Long): Optional<ArviointityokaluDTO>
 
     fun delete(id: Long)
+
 }

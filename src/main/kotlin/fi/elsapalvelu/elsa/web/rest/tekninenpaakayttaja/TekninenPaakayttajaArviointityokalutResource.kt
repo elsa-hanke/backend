@@ -15,6 +15,11 @@ class TekninenPaakayttajaArviointityokalutResource(
     private val arviointityokaluKategoriaService: ArviointityokaluKategoriaService
 ) {
 
+    @GetMapping("/arviointityokalut/kategoriat")
+    fun getErikoisalat(): ResponseEntity<List<ArviointityokaluKategoriaDTO>> {
+        return ResponseEntity.ok(arviointityokaluKategoriaService.findAll())
+    }
+
     @PostMapping("/arviointityokalut/kategoria")
     fun createArviointityokaluKategoria(
         @Valid @RequestBody arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO

@@ -24,6 +24,15 @@ class ArviointityokaluKategoriaServiceImpl(
         return arviointityokaluKategoriaMapper.toDto(arviointityokalu)
     }
 
+    override fun update(arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO): ArviointityokaluKategoriaDTO? {
+        return arviointityokaluKategoriaRepository.findById(arviointityokaluKategoriaDTO.id!!).orElse(null)
+            ?.let {
+                it.nimi = arviointityokaluKategoriaDTO.nimi
+                val result = arviointityokaluKategoriaRepository.save(it)
+                arviointityokaluKategoriaMapper.toDto(result)
+            }
+    }
+
     @Transactional(readOnly = true)
     override fun findAll(): List<ArviointityokaluKategoriaDTO> {
         return arviointityokaluKategoriaRepository.findAll()

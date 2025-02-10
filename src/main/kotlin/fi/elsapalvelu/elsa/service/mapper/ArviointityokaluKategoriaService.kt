@@ -7,6 +7,8 @@ interface ArviointityokaluKategoriaService {
 
     fun create(arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO): ArviointityokaluKategoriaDTO
 
+    fun update(arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO): ArviointityokaluKategoriaDTO?
+
     fun findAll(): List<ArviointityokaluKategoriaDTO>
 
     fun findOne(id: Long): Optional<ArviointityokaluKategoriaDTO>

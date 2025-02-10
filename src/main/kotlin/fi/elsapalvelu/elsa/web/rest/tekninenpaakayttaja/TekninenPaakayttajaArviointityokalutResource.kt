@@ -6,6 +6,7 @@ import fi.elsapalvelu.elsa.service.mapper.ArviointityokaluKategoriaService
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import tech.jhipster.web.util.ResponseUtil
 import java.security.Principal
 
 @RestController
@@ -16,8 +17,17 @@ class TekninenPaakayttajaArviointityokalutResource(
 ) {
 
     @GetMapping("/arviointityokalut/kategoriat")
-    fun getErikoisalat(): ResponseEntity<List<ArviointityokaluKategoriaDTO>> {
+    fun getArviointityokaluKategoriat(): ResponseEntity<List<ArviointityokaluKategoriaDTO>> {
         return ResponseEntity.ok(arviointityokaluKategoriaService.findAll())
+    }
+
+    @GetMapping("/arviointityokalut/kategoria/{id}")
+    fun getArviointityokaluKategoria(
+        @PathVariable id: Long,
+        principal: Principal?
+    ): ResponseEntity<ArviointityokaluKategoriaDTO> {
+        val arviointityokaluKategoriaDTO = arviointityokaluKategoriaService.findOne(id)
+        return ResponseUtil.wrapOrNotFound(arviointityokaluKategoriaDTO)
     }
 
     @PostMapping("/arviointityokalut/kategoria")
@@ -27,12 +37,12 @@ class TekninenPaakayttajaArviointityokalutResource(
         return ResponseEntity.ok(arviointityokaluKategoriaService.create(arviointityokaluKategoriaDTO))
     }
 
-    // @PutMapping("/arviointityokalut/kategoria")
-    // fun updateArviointityokaluKategoria(
-    //     @Valid @RequestBody arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO
-    // ): ResponseEntity<ArviointityokaluKategoriaDTO> {
-    //     return ResponseEntity.ok(arviointityokaluKategoriaService.update(arviointityokaluKategoriaDTO))
-    // }
+    @PatchMapping("/arviointityokalut/kategoria")
+    fun updateArviointityokaluKategoria(
+        @Valid @RequestBody arviointityokaluKategoriaDTO: ArviointityokaluKategoriaDTO
+    ): ResponseEntity<ArviointityokaluKategoriaDTO> {
+        return ResponseEntity.ok(arviointityokaluKategoriaService.update(arviointityokaluKategoriaDTO))
+    }
 
     @DeleteMapping("/arviointityokalut/kategoria/{id}")
     fun deleteArviointityokaluKategoria(
